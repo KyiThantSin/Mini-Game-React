@@ -1,5 +1,7 @@
 import { Container } from "react-bootstrap";
 import styled from 'styled-components';
+import {useState} from 'react';
+
 
 const Box = styled.div`
     text-align: center;
@@ -16,11 +18,12 @@ const Box = styled.div`
         background-color:#F3F3F3;
     }
 `
-const Square = () => {
+const Square = (props) => {
+  
     return ( 
-        <Container className="p-2">
+        <Container className="p-2" onClick={props.onClickEvent}>
             <Box>
-                <h2>X</h2>
+                <h2>{props.value}</h2>
             </Box>
         </Container>
      );
