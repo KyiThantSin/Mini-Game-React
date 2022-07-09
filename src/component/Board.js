@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Square from "./Square";
 import { useState } from "react";
 
@@ -7,6 +7,7 @@ const Board = () => {
    const [squares, setSquares] = useState(initialState);
    const [player, setPlayer] = useState(true);
 
+   //play
    const onClickEvent = (id) =>{
     const newSquares = [...squares];
 
@@ -30,7 +31,7 @@ const Board = () => {
                    onClickEvent={()=>onClickEvent(id)}/>
        )
    }
-   //resukts 
+   //calculate winner 
    function calculateResult(square){
        const lines = [
            [0,1,2],[3,4,5],[6,7,8],
@@ -50,15 +51,35 @@ const Board = () => {
    
    const winner = calculateResult(squares)
    const status =  winner ? `Winner: ${winner}` : `Next Player:  ${ player ? "X" : "O"}`
-    return ( 
+   
+   //play again
+   const onRefresh = (e) =>{
+       e.preventDefault();
+       setSquares(initialState);
+   }
+
+   return ( 
         <Container className="p-4">
 
             <h2 style={{textAlign:"center"}}>Tic-Tac-Toe</h2>
 
-            <h3 className="mt-4">
-                {status}
-            </h3>
-           
+            <Row>
+                <Col md={8} >
+                    <h3 className="mt-4">
+                        {status}
+                    </h3>
+                </Col>
+
+                <Col md={4} >
+                    <Button variant="light"
+                            onClick={onRefresh}
+                    >
+                        <img src={require("../icons/refresh.png")} alt="refresh" className="p-2"/>
+                         Play Again
+                    </Button>
+                </Col>
+            </Row>
+
             <div style={{border:"1px solid #999797"}} 
                 className="p-1 mt-3">
                 <Row className="m-0 mt-4">

@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#light {
+  background-color: white;
+  color: #302F2F;
+}
+
+#dark {
+  background-color: #D6DBDF;
+}
+
+#dark h2 h3 {
+  color: white;
+}
